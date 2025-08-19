@@ -2,9 +2,8 @@ name: React CI/CD Pipeline
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches:
+     - "main"
 
 env:
   IMAGE_NAME: yasin885/todo
@@ -21,7 +20,7 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Run tests
         run: npm test -- --watchAll=false
