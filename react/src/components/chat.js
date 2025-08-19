@@ -12,7 +12,7 @@ const Chat = ({ receiverid, userid, socket }) => {
   useEffect(() => {
     const fetchConversation = async () => {
       try {
-        const res = await axios.post("http://localhost:2000/conversation", {
+        const res = await axios.post("http://localhost:000/conversation", {
           userid,
           receiverid,
         });
