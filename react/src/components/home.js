@@ -36,7 +36,7 @@ const Home = () => {
   dispatch(loadUserid(userid));
 
   useEffect(() => {
-    const socket = io("http://localhost:5000");
+    const socket = io("http://localhost:3000");
     console.log(socket);
     setSocket(socket);
     socket.on("connect", () => {
