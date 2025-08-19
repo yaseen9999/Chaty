@@ -1,12 +1,13 @@
-# File: .github/workflows/ci-cd.yml
 name: React CI/CD Pipeline
 
 on:
- workflow_dispatch: #
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+
+env:
+  IMAGE_NAME: yasin885/todo
 
 jobs:
   build-and-test:
@@ -35,11 +36,13 @@ jobs:
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          password: ${{ secrets.DOCKERPASS }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/react-app:latest,${{ secrets.DOCKER_USERNAME }}/react-app:${{ github.sha }}
+          tags: |
+            ${{ env.IMAGE_NAME }}:latest
+            ${{ env.IMAGE_NAME }}:${{ github.sha }}
