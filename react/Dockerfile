@@ -2,7 +2,7 @@
 FROM node:20 AS build   # use Node 20 instead of 18
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci              # use ci for clean, reproducible install
+RUN npm ci              # use s ci for clean, reproducible install
 COPY . .
 RUN npm run build
 
