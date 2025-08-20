@@ -1,8 +1,9 @@
+# Dockerfile
 # Step 1: Build the React app
-FROM node:20 AS build   # use Node 20 instead of 18
+FROM node:18 AS build
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci              # use s ci for clean, reproducible install
+RUN npm ci
 COPY . .
 RUN npm run build
 
